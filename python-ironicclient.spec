@@ -6,7 +6,7 @@
 
 Name:		python-ironicclient
 Version:	0.3.1
-Release:	1%{?dist}
+Release:	1.chameleon1%{?dist}
 Summary:	Python client for Ironic
 
 License:	ASL 2.0
@@ -15,6 +15,7 @@ Source0:	http://tarballs.openstack.org/python-ironicclient/python-ironicclient-0
 
 Patch0001:	0001-ironicclient-Remove-runtime-dependency-on-python-pbr.patch
 Patch0002:	0002-ironicclient-Prevent-pbr-dependencies-handling.patch
+Patch0003:	0003-Chameleon-add-chassis-uuid-filter.patch 
 
 BuildArch:	noarch
 
@@ -38,6 +39,7 @@ A python and command line client library for Ironic.
 
 %patch0001 -p1
 %patch0002 -p1
+%patch0003 -p1
 
 # We provide version like this in order to remove runtime dep on pbr.
 sed -i s/REDHATIRONICCLIENTVERSION/%{version}/ ironicclient/__init__.py
@@ -57,6 +59,8 @@ sed -i s/REDHATIRONICCLIENTVERSION/%{version}/ ironicclient/__init__.py
 
 
 %changelog
+* Thu Jan 22 2015 Pierre Riteau <priteau@uchicago.edu> 0.3.1-2.el7
+- Add support for chassis UUID filter to list API call
 
 * Thu Oct 16 2014 Angus Thomas <athomas@redhat.com> - 0.3.1-1
 - Rebased to python-ironicclient-0.3.1

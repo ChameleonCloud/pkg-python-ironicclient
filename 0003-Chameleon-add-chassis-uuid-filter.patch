@@ -1,0 +1,27 @@
+--- a/ironicclient/v1/node.py
++++ b/ironicclient/v1/node.py
+@@ -34,10 +34,13 @@
+     def _path(id=None):
+         return '/v1/nodes/%s' % id if id else '/v1/nodes'
+ 
+-    def list(self, associated=None, maintenance=None, marker=None, limit=None,
+-             detail=False, sort_key=None, sort_dir=None):
++    def list(self, chassis_uuid=None, associated=None, maintenance=None,
++             marker=None, limit=None, detail=False, sort_key=None,
++             sort_dir=None):
+         """Retrieve a list of nodes.
+ 
++        :param chassis_uuid: Optional UUID of a chassis, to get only nodes for
++                             that chassis.
+         :param associated: Optional, boolean whether to return a list of
+                            associated or unassociated nodes.
+         :param maintenance: Optional, boolean value that indicates whether
+@@ -70,6 +73,8 @@
+             limit = int(limit)
+ 
+         filters = utils.common_filters(marker, limit, sort_key, sort_dir)
++        if chassis_uuid is not None:
++            filters.append('chassis_uuid=%s' % chassis_uuid)
+         if associated is not None:
+             filters.append('associated=%s' % associated)
+         if maintenance is not None:
