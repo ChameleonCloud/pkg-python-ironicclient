@@ -6,7 +6,7 @@
 
 Name:		python-ironicclient
 Version:	0.3.1
-Release:	1.chameleon1%{?dist}
+Release:	1%{?dist}.chameleon1
 Summary:	Python client for Ironic
 
 License:	ASL 2.0
@@ -59,7 +59,7 @@ sed -i s/REDHATIRONICCLIENTVERSION/%{version}/ ironicclient/__init__.py
 
 
 %changelog
-* Thu Jan 22 2015 Pierre Riteau <priteau@uchicago.edu> 0.3.1-2.el7
+* Thu Jan 22 2015 Pierre Riteau <priteau@uchicago.edu> 0.3.1-1.el7.chameleon1
 - Add support for chassis UUID filter to list API call
 
 * Thu Oct 16 2014 Angus Thomas <athomas@redhat.com> - 0.3.1-1
